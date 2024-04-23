@@ -5,11 +5,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import Joi from 'joi';
 import DBToken from './models/database/token.model';
+import { LoggerModule } from './logger/logger.module';
 
 const ENV = process.env.NODE_ENV;
 
 @Module({
   imports: [
+    LoggerModule,
     EmailPassAuthModule,
     ConfigModule.forRoot({
       isGlobal: true,

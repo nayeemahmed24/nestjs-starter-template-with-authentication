@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import DBUser from 'src/models/database/user.model';
 import DBToken from 'src/models/database/token.model';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProjectLogger } from 'src/logger/logger';
 
 @Module({
   imports: [
@@ -15,6 +16,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     ]),
   ],
   controllers: [EmailPassAuthController],
-  providers: [EmailPassAuthService, TokenService, JwtService],
+  providers: [EmailPassAuthService, TokenService, JwtService, ProjectLogger],
 })
 export class EmailPassAuthModule { }

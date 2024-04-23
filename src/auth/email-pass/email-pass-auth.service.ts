@@ -33,7 +33,7 @@ export class EmailPassAuthService {
 
         registerPayload.password = await bcrypt.hash(registerPayload.password, 10);
         const userModel = this.getUserModel(registerPayload, role);
-        const registeredUser = await this.userRepository.create(userModel);
+        const registeredUser = await this.userRepository.save(userModel);
         registeredUser.password = null;
         return registeredUser;
     }
