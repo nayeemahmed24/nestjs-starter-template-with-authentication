@@ -14,10 +14,4 @@ export abstract class DBBaseEntity {
 
     @Column({ name: 'last_update_date', type: 'timestamptz', default: null })
     public lastUpdateDate: string;
-
-    @Column({ name: 'created_by', type: 'uuid', default: null })
-    public createdBy: string;
-
-    @Column({ name: 'last_updated_by', type: 'uuid', default: null })
-    public lastUpdatedBy: string;
 }

@@ -8,7 +8,7 @@ export class LoginWithEmailPayload {
 	})
     @IsNotEmpty()
     @IsEmail()
-    public email: string;
+    public emailAddress: string;
 
     @ApiProperty({
 		description: "Minimum Length is 6 and maximum is 26",

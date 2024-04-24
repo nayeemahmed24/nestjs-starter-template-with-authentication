@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
-import { Role } from "src/models/enum/role.enum";
+import { Role } from "../../../../models/enum/role.enum";
 
 /* istanbul ignore file */
 export class RegisterWithEmailPayload {
@@ -8,8 +8,9 @@ export class RegisterWithEmailPayload {
 		example: "abc@gmail.com"
 	})
     @IsNotEmpty()
+    @IsString()
     @IsEmail()
-    public email: string;
+    public emailAddress: string;
     
     @ApiProperty({
 		description: "Minimum Length is 6 and maximum is 26",

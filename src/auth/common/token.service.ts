@@ -2,9 +2,9 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService, JwtSignOptions } from '@nestjs/jwt';
 import { randomUUID } from 'crypto';
 import { InjectRepository } from '@nestjs/typeorm';
-import DBUser from 'src/models/database/user.model';
+import DBUser from '../../models/database/user.model';
 import { Repository } from 'typeorm';
-import DBToken from 'src/models/database/token.model';
+import DBToken from '../../models/database/token.model';
 import { ConfigService } from '@nestjs/config';
 
 

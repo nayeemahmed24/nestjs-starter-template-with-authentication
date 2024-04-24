@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { EmailPassAuthModule } from './auth/email-pass/email-pass-auth.module';
 import DBUser from './models/database/user.model';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -6,12 +6,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import Joi from 'joi';
 import DBToken from './models/database/token.model';
 import { LoggerModule } from './logger/logger.module';
+import { CollectEmailMiddleware } from './auth/email-pass/middlewares/collect-email.middleware';
+import { JwtModule } from '@nestjs/jwt';
 
 const ENV = process.env.NODE_ENV;
 
 @Module({
   imports: [
     LoggerModule,
+    JwtModule,
     EmailPassAuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
@@ -41,4 +44,8 @@ const ENV = process.env.NODE_ENV;
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule { 
+  configure(consumer: MiddlewareConsumer): any {
+    consumer.apply(CollectEmailMiddleware).forRoutes('*');
+  }
+}
