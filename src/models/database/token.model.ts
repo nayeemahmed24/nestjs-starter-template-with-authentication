@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { DBBaseEntity } from './base.model';
 import DBUser from './user.model';
 

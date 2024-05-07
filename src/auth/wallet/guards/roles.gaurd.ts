@@ -23,6 +23,7 @@ export class RolesGuard implements CanActivate {
     }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
+        this.logger.log('',  'START')
         const requireRoles = this.reflector.get<string[]>(
             'roles',
             context.getHandler(),
@@ -71,7 +72,6 @@ export class RolesGuard implements CanActivate {
         const userRoles = tokenInfo['roles'];
 
         this.logger.debug(correlationId, `user roles are: ${userRoles}`);
-        console.log(`user roles are: ${userRoles}`)
 
         return requireRoles == userRoles;
     }
