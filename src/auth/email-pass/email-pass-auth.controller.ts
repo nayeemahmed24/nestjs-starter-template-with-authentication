@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Res, UseGuards } from '@nestjs/common';
 import { RegisterWithEmailPayload } from './models/payloads/register-with-email.payload';
 import { Response } from 'express';
 import { randomUUID } from 'crypto';
@@ -10,9 +10,11 @@ import { RefreshWithEmailFlowPayload } from './models/payloads/refresh-with-emai
 import { Email } from './decorators/email.decorator';
 import { Role } from '../../models/enum/role.enum';
 import { Roles } from './decorators/roles.decorator';
+import { RolesGuard } from './guards/roles.gaurd';
 
 @ApiTags('Auth With Email Password')
 @Controller('auth')
+@UseGuards(RolesGuard)
 export class EmailPassAuthController {
   constructor(
     private readonly emailPassAuthService: EmailPassAuthService,
@@ -98,14 +100,14 @@ export class EmailPassAuthController {
     @Email() email: string,
   ): Promise<any> {
     const correlationId: string = randomUUID();
-    this.logger.log(correlationId, `testAdmin STARTED.`);
+    this.logger.log(correlationId, `testUser STARTED.`);
     const res = this.emailPassAuthService.authTest(
       correlationId,
       email,
       Role.USER
     );
     response.status(HttpStatus.OK);
-    this.logger.log(correlationId, `testAdmin ENDED.`);
+    this.logger.log(correlationId, `testUser ENDED.`);
     return response.json(res);
   }
 }
