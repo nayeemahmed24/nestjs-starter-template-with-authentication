@@ -10,6 +10,8 @@ import { CollectEmailMiddleware } from './auth/email-pass/middlewares/collect-em
 import { JwtModule } from '@nestjs/jwt';
 import { WalletAuthModule } from './auth/wallet/wallet-auth.module';
 import { CollectWalletMiddleware } from './auth/wallet/middlewares/collect-wallet.middleware';
+import { Auth0Module } from './auth/auth0/auth0.module';
+import { CollectEmailMiddlewareFromAuth0 } from './auth/auth0/middlewares/collect-email-auth0.middleware';
 
 const ENV = process.env.NODE_ENV;
 
@@ -19,6 +21,7 @@ const ENV = process.env.NODE_ENV;
     JwtModule,
     EmailPassAuthModule,
     WalletAuthModule,
+    Auth0Module,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `${process.cwd()}/env/${ENV}.env`,
@@ -51,5 +54,6 @@ export class AppModule {
   configure(consumer: MiddlewareConsumer): any {
     consumer.apply(CollectEmailMiddleware).forRoutes('auth');
     consumer.apply(CollectWalletMiddleware).forRoutes('wallet-auth');
+    consumer.apply(CollectEmailMiddlewareFromAuth0).forRoutes('auth0');
   }
 }
