@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { RegisterWithEmailPayload } from './models/payloads/register-with-email.payload';
 import { InjectRepository } from '@nestjs/typeorm';
