@@ -1,0 +1,26 @@
+<html>
+<button id="btn">Hello</button>
+<input type="text" id="myInput" value="Pre-filled text">
+
+</html>
+
+
+
+<script>
+
+    document.getElementById("btn").addEventListener("click", () => {
+        console.log('processing ' + window.location.origin)
+        // Update configuration
+        const auth0Url =
+            `https://auth-template.us.auth0.com/authorize?` +
+            `client_id=eh4cRWCdlt6PFHO4a1q9fZrzSHhJLPMD` +
+            `&response_type=code` +
+            `&scope=openid profile email offline_access` +
+            `&redirect_uri=${encodeURIComponent('https://127.0.0.1:5500')}` +
+            `&connection=${encodeURIComponent('google-oauth2')}` +
+            `&audience=${encodeURIComponent('https://127.0.0.1:5500')}`;
+        console.log(auth0Url)
+        window.location.replace(auth0Url);
+    })
+
+</script>
