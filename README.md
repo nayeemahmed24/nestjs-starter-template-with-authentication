@@ -64,7 +64,7 @@ Auth0's Gmail login process simplifies the journey to accessing your favorite ap
 
 ![image](https://github.com/nayeemahmed24/nestjs-starter-template-with-authentication/assets/42116405/27bab7b2-7ba7-48c0-90ee-6b5917fba45c)
 
-This login endpoint takes `code` as payload. To generate `code` we need to call auth0 api from client and pass that code as payload. You can use this [code]() for generating `code`. Please update your credentials with your auth0 credentials. For getting credentials you can follow the steps given below:
+This login endpoint takes `code` as payload. To generate `code` we need to call auth0 api from client and pass that code as payload. You can use this [code](https://github.com/nayeemahmed24/nestjs-starter-template-with-authentication/tree/auth0-client/Auth0%20client) for generating `code`. Please update your credentials with your auth0 credentials. For getting credentials you can follow the steps given below:
 
 
 
